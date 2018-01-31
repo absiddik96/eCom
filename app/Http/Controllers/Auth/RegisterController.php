@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User\User;
+use Illuminate\Http\Request;
 use App\Models\Admin\UserRole;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -25,17 +26,17 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
+    * Where to redirect users after registration.
+    *
+    * @var string
+    */
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    * Create a new controller instance.
+    *
+    * @return void
+    */
     public function __construct()
     {
         $this->middleware('guest');
@@ -60,17 +61,17 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+    * Get a validator for an incoming registration request.
+    *
+    * @param  array  $data
+    * @return \Illuminate\Contracts\Validation\Validator
+    */
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6|max:50|confirmed',
             'gender' => 'required|string|min:1|max:10',
             'dob' => 'required|date',
             'role_id' => 'required|numeric',
@@ -81,11 +82,11 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
+    * Create a new user instance after a valid registration.
+    *
+    * @param  array  $data
+    * @return \App\User
+    */
     protected function create(array $data)
     {
         $user = User::create([
@@ -109,4 +110,28 @@ class RegisterController extends Controller
 
         return $user;
     }
+
+    //......corporate user register
+    public function corporateCreate(Request $request)
+    {
+        $this->validate($request,[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|max:50|confirmed',
+            'role_id' => 'required|numeric',
+
+        ],[
+            'role_id.required'=>'The role field is required.'
+        ]);
+
+        $input = $request->all();
+        $input['user_id'] = User::generateUserId();
+        $input['verification_token'] = User::generateVerificationToken();
+        $input['is_corporate'] = User::CORPORATE_USER;
+        $input['password'] = bcrypt($request->password);
+        $user = User::create($input);
+
+        return redirect()->route('login');
+    }
+
 }
