@@ -39,7 +39,7 @@
                     <div class="profile">
 
                         <div class="profile-data">
-                            <div class="profile-data-name">Name</div>
+                            <div class="profile-data-name">{{ Auth::user()->name }}</div>
                         </div>
 
                     </div>
@@ -52,7 +52,7 @@
 
 
                 <li>
-                    <a href=""><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+                    <a href="{{route('admin.dash')}}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
                 </li>
 
                 <li class="xn-openable">

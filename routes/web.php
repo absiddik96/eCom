@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('layouts.admin');
+    return view('welcome');
 });
 Route::get('/admin', function () {
     return view('layouts.admin');
@@ -28,8 +28,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //.........ADMIN AREA..........
+//.........admin login
+Route::get('admin/login','Admin\User\AdminUsersController@login')->name('admin.login');
 
 Route::group(['prefix'=>'admin'],function(){
+    //..........admin dash
+    Route::get('dash','Admin\Dash\AdminDashController@dash')->name('admin.dash');
     //..........user role
     Route::resource('user-role','Admin\UserRole\UserRolesController',['except'=>['create','show']]);
 });
