@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.admin');
 });
 Route::get('/admin', function () {
     return view('layouts.admin');
@@ -25,3 +25,11 @@ Route::post('/c-register','Auth\RegisterController@corporateCreate')->name('corp
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//.........ADMIN AREA..........
+
+Route::group(['prefix'=>'admin'],function(){
+    //..........user role
+    Route::resource('user-role','Admin\UserRole\UserRolesController',['except'=>['create','show']]);
+});
