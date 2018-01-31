@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User\User;
+use App\Models\Admin\UserRole;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\User\PersonalUser\PersonalUserBasicInfo;
 
 class RegisterController extends Controller
 {
@@ -39,6 +41,24 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    //........pre register page
+    public function preRegister()
+    {
+        return view('auth.pre-register');
+    }
+
+    public function corporateRegister()
+    {
+        $roles=UserRole::pluck('name','id')->all();
+        return view('auth.corporate-register', compact('roles'));
+    }
+
+    public function showRegistrationForm()
+    {
+        $roles = UserRole::pluck('name','id')->all();
+        return view('auth.register', compact('roles'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -51,6 +71,12 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'gender' => 'required|string|min:1|max:10',
+            'dob' => 'required|date',
+            'role_id' => 'required|numeric',
+
+        ],[
+            'role_id.required'=>'The role field is required.'
         ]);
     }
 
@@ -62,10 +88,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
+            'user_id' => User::generateUserId(),
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'verification_token' => User::generateVerificationToken(),
+            'role_id' => $data['role_id'],
         ]);
+
+        PersonalUserBasicInfo::create([
+            'user_id' => $user->user_id,
+            'image' => '',
+            'gender' => $data['gender'],
+            'dob' => $data['dob'],
+            'phone' => '',
+            'fax' => '',
+            'post_code' => '',
+        ]);
+
+        return $user;
     }
 }

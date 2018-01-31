@@ -5,15 +5,15 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Personal User Register</div>
+                    <div class="panel-heading">Corporate User Register</div>
 
                     <div class="panel-body">
                         @include('errors.error')
-                        <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                        <form class="form-horizontal" method="POST" action="{{ url('c-register') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Name</label>
+                                <label for="name" class="col-md-4 control-label">Company Name</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -51,30 +51,8 @@
                             </div>
 
 
-                            <div class="form-group">
-                                <label for="gender" class="col-md-4 control-label">Gender</label>
-
-                                <div class="col-md-6">
-                                    <select class="form-control" name="gender" id="gender" required>
-                                        <option value="">I am</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Others">Others</option>
-                                    </select>
-                                </div>
-
-                            </div>
 
 
-
-                            <div class="form-group">
-                                <label for="dob" class="col-md-4 control-label">Date of Birth</label>
-
-                                <div class="col-md-6">
-                                    <input id="dob" type="date" class="form-control" name="dob" required>
-
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <label for="role" class="col-md-4 control-label">Role / Registered as</label>
