@@ -1,15 +1,7 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// IMPORTANT
+// 1. resource route names are [-]hiphen seperated
+// 2. others route names ar camelcase
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,7 +10,7 @@ Route::get('/admin', function () {
     return view('layouts.admin');
 });
 
-//........Pre registation like [public,corporate]
+//........Pre registation like [public,corporate(c)]
 Route::get('/pre-register','Auth\RegisterController@preRegister')->name('preRegister');
 Route::get('/c-register','Auth\RegisterController@corporateRegister')->name('corporateRegister');
 Route::post('/c-register','Auth\RegisterController@corporateCreate')->name('corporateCreate');
@@ -43,6 +35,10 @@ Route::group(['prefix'=>'admin'],function(){
     Route::resource('sys-police-station','Admin\Location\SysPoliceStationsController');
     Route::resource('sys-word','Admin\Location\SysWordsController');
     Route::resource('sys-village','Admin\Location\SysVillagesController');
+    //........mobile bank
+    Route::resource('mobile-bank','Admin\Bank\MobileBank\MobileBanksController',['except'=>['create','show']]);
+    //........e-wallet
+    Route::resource('e-wallet','Admin\Bank\EWallet\EWalletsController',['except'=>['create','show']]);
 });
 
 //........SYSTEM LOCATION............

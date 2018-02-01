@@ -67,89 +67,103 @@
 
 
                 <li class="xn-openable">
-      <a href="#"><span class="fa fa-map-marker"></span> <span class="xn-text">Location</span></a>
-      <ul>
-          <li class="xn-openable">
-              <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Country</span></a>
-              <ul>
-                  <li>
-                      <a href="{{route('sys-country.create')}}"><span class="fa fa-plus"></span>Add Country</a>
-                  </li>
-                  <li>
-                      <a href="{{route('sys-country.index')}}"><span class="fa fa-eye"></span>View Country</a>
-                  </li>
+                    <a href="#"><span class="fa fa-map-marker"></span> <span class="xn-text">Location</span></a>
+                    <ul>
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Country</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('sys-country.create')}}"><span class="fa fa-plus"></span>Add Country</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('sys-country.index')}}"><span class="fa fa-eye"></span>View Country</a>
+                                </li>
 
-              </ul>
-          </li>
+                            </ul>
+                        </li>
 
-          <li class="xn-openable">
-              <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Division/State</span></a>
-              <ul>
-                  <li>
-                      <a href="{{route('sys-division.create')}}"><span class="fa fa-plus"></span>Add Division/State</a>
-                  </li>
-                  <li>
-                      <a href="{{route('sys-division.index')}}"><span class="fa fa-eye"></span>View Division/State</a>
-                  </li>
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Division/State</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('sys-division.create')}}"><span class="fa fa-plus"></span>Add Division/State</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('sys-division.index')}}"><span class="fa fa-eye"></span>View Division/State</a>
+                                </li>
 
-              </ul>
-          </li>
+                            </ul>
+                        </li>
 
-          <li class="xn-openable">
-              <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">District/City</span></a>
-              <ul>
-                  <li>
-                      <a href="{{route('sys-city.create')}}"><span class="fa fa-plus"></span>Add District/City</a>
-                  </li>
-                  <li>
-                      <a href="{{route('sys-city.index')}}"><span class="fa fa-eye"></span>View District/City</a>
-                  </li>
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">District/City</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('sys-city.create')}}"><span class="fa fa-plus"></span>Add District/City</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('sys-city.index')}}"><span class="fa fa-eye"></span>View District/City</a>
+                                </li>
 
-              </ul>
-          </li>
+                            </ul>
+                        </li>
 
-          <li class="xn-openable">
-              <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Upazila/Police Station</span></a>
-              <ul>
-                  <li>
-                      <a href="{{route('sys-police-station.create')}}"><span class="fa fa-plus"></span>Add Upazila/Police Station</a>
-                  </li>
-                  <li>
-                      <a href="{{route('sys-police-station.index')}}"><span class="fa fa-eye"></span>View Upazila/Police Station</a>
-                  </li>
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Upazila/Police Station</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('sys-police-station.create')}}"><span class="fa fa-plus"></span>Add Upazila/Police Station</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('sys-police-station.index')}}"><span class="fa fa-eye"></span>View Upazila/Police Station</a>
+                                </li>
 
-              </ul>
-          </li>
+                            </ul>
+                        </li>
 
-          <li class="xn-openable">
-              <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Union/Word</span></a>
-              <ul>
-                  <li>
-                      <a href="{{route('sys-word.create')}}"><span class="fa fa-plus"></span>Add Union/Word</a>
-                  </li>
-                  <li>
-                      <a href="{{route('sys-word.index')}}"><span class="fa fa-eye"></span>View Union/Word</a>
-                  </li>
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Union/Word</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('sys-word.create')}}"><span class="fa fa-plus"></span>Add Union/Word</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('sys-word.index')}}"><span class="fa fa-eye"></span>View Union/Word</a>
+                                </li>
 
-              </ul>
-          </li>
+                            </ul>
+                        </li>
 
-          <li class="xn-openable">
-              <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Village/Moholla</span></a>
-              <ul>
-                  <li>
-                      <a href="{{route('sys-village.create')}}"><span class="fa fa-plus"></span>Add Village/Moholla</a>
-                  </li>
-                  <li>
-                      <a href="{{route('sys-village.index')}}"><span class="fa fa-eye"></span>View Village/Moholla</a>
-                  </li>
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-flag"></span> <span class="xn-text">Village/Moholla</span></a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('sys-village.create')}}"><span class="fa fa-plus"></span>Add Village/Moholla</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('sys-village.index')}}"><span class="fa fa-eye"></span>View Village/Moholla</a>
+                                </li>
 
-              </ul>
-          </li>
+                            </ul>
+                        </li>
 
 
-      </ul>
-  </li>
+                    </ul>
+                </li>
+
+                <li class="xn-openable">
+                    <a href="#"><span class="fa fa-bank"></span> <span class="xn-text">Bank</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{route('mobile-bank.index')}}"><span class="fa fa-tasks"></span> <span class="xn-text">Mobile Bank</span></a>
+                        </li>
+                        <li>
+                            <a href="{{route('e-wallet.index')}}"><span class="fa fa-tasks"></span> <span class="xn-text">E-Wallet</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+
 
 
                 <li class="xn-openable">
