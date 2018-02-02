@@ -13,7 +13,13 @@
                     {{Form::open(['route'=>'user-role.store','method'=>'POST'])}}
                     <label for="">Role Name</label>
                     {{Form::text('name',null,['class'=>'form-control'])}}
+                    <label for="">Role For</label>
                     <br>
+                    {{Form::radio('role_for',0,['active'])}} Personal User
+                    <br>
+                    {{Form::radio('role_for',1)}} Corporate User
+                    <br><br>
+
                     {{Form::submit('Add Role',['class'=>'btn btn-info'])}}
                     {{Form::close()}}
                 </div>
@@ -29,6 +35,7 @@
                     <table class="table">
                         <thead>
                             <th>Role</th>
+                            <th>Role For</th>
                             <th>Action</th>
                         </thead>
 
@@ -37,6 +44,7 @@
                                 @foreach ($roles as $role)
                                     <tr>
                                         <td>{{$role->name}}</td>
+                                        <td>{{$role->getRoleFor()}}</td>
                                         <td>
                                             <a href="{{route('user-role.edit',$role->id)}}" class="btn btn-sm btn-info pull-left">Edit</a>
 

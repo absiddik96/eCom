@@ -31,10 +31,12 @@ class UserRolesController extends AdminBaseController
         {
             $this->validate($request,[
                 'name' => 'required|min:2|max:150|unique:user_roles',
+                'role_for' => 'required|numeric',
             ]);
 
             $role = new UserRole();
             $role->name = strtolower($request->name);
+            $role->role_for = $request->role_for;
 
             if ($role->save()) {
                 Session::flash('success', 'User role create successfull.');
@@ -68,9 +70,11 @@ class UserRolesController extends AdminBaseController
         {
             $this->validate($request,[
                 'name' => 'required|min:2|max:150|unique:user_roles,name,'.$userRole->id,
+                'role_for' => 'required|numeric',
             ]);
 
             $userRole->name = strtolower($request->name);
+            $userRole->role_for = $request->role_for;
 
             if ($userRole->save()) {
                 Session::flash('success', 'User role update successfull.');

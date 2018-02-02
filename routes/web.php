@@ -28,6 +28,15 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('dash','Admin\Dash\AdminDashController@dash')->name('admin.dash');
     //..........user role
     Route::resource('user-role','Admin\UserRole\UserRolesController',['except'=>['create','show']]);
+    //..........user
+    Route::resource('users','Admin\User\AdminUsersController',['except'=>'show']);
+    Route::put('users/password/{id}','Admin\User\AdminUsersController@changePassword')->name('user.changePassword');
+    Route::get('users/verify/{token}','Admin\User\AdminUsersController@verifyByAdmin')->name('user.verifyByAdmin');
+    Route::get('users/admin/{id}','Admin\User\AdminUsersController@makeAdmin')->name('user.makeAdmin');
+    Route::get('users/regular/{id}','Admin\User\AdminUsersController@makeRegular')->name('user.makeRegular');
+    Route::get('users/active/{id}','Admin\User\AdminUsersController@active')->name('user.active');
+    Route::get('users/deactive/{id}','Admin\User\AdminUsersController@deactive')->name('user.deactive');
+
     //......system location
     Route::resource('sys-country','Admin\Location\SysCountriesController');
     Route::resource('sys-division','Admin\Location\SysDivisionsController');
@@ -42,8 +51,7 @@ Route::group(['prefix'=>'admin'],function(){
 });
 
 //........SYSTEM LOCATION............
-Route::group(['middleware'=>'auth'],function()
-{
+Route::group(['middleware'=>'auth'],function(){
     //.........get location for select option [ajax]
     Route::post('get-sys-division','PublicLocation\SysLocationController@getDivision')->name('getSysDivision');
     Route::post('get-sys-city','PublicLocation\SysLocationController@getCity')->name('getSysCity');

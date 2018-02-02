@@ -52,6 +52,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Admin\UserRole', 'role_id');
+    }
+
 
     public static function generateUserId()
     {
