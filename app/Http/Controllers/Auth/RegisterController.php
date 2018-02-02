@@ -50,7 +50,7 @@ class RegisterController extends Controller
 
     public function corporateRegister()
     {
-        $roles=UserRole::where('role_for', UserRole::ROLE_FOR_CORPORATE_USER)->pluck('name','id')->all();
+        $roles = UserRole::where('role_for', UserRole::ROLE_FOR_CORPORATE_USER)->pluck('name','id')->all();
         return view('auth.corporate-register', compact('roles'));
     }
 

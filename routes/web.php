@@ -30,6 +30,9 @@ Route::group(['prefix'=>'admin'],function(){
     Route::resource('user-role','Admin\UserRole\UserRolesController',['except'=>['create','show']]);
     //..........user
     Route::resource('users','Admin\User\AdminUsersController',['except'=>'show']);
+    Route::post('user/create','Admin\User\AdminUsersController@corporateStore')->name('user.corporate.store');
+    Route::get('user-by-role/{role}','Admin\User\AdminUsersController@userByRole')->name('userByRole');
+
     Route::put('users/password/{id}','Admin\User\AdminUsersController@changePassword')->name('user.changePassword');
     Route::get('users/verify/{token}','Admin\User\AdminUsersController@verifyByAdmin')->name('user.verifyByAdmin');
     Route::get('users/admin/{id}','Admin\User\AdminUsersController@makeAdmin')->name('user.makeAdmin');

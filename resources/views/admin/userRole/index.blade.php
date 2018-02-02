@@ -46,11 +46,14 @@
                                         <td>{{$role->name}}</td>
                                         <td>{{$role->getRoleFor()}}</td>
                                         <td>
-                                            <a href="{{route('user-role.edit',$role->id)}}" class="btn btn-sm btn-info pull-left">Edit</a>
-
-                                            {{Form::open(['route'=>['user-role.destroy',$role->id],'method'=>'DELETE'])}}
-                                            {{Form::submit('Delete',['class'=>'btn btn-sm btn-danger pull-right', "onclick" => "return confirm('Are you sure you want to delete this item?');"])}}
-                                            {{Form::close()}}
+                                            <div class="pull-left">
+                                                <a href="{{route('user-role.edit',$role->id)}}" class="btn btn-sm btn-info pull-left">Edit</a>
+                                            </div>
+                                            <div class="pull-left">
+                                                {{Form::open(['route'=>['user-role.destroy',$role->id],'method'=>'DELETE'])}}
+                                                {{Form::submit('Delete',['class'=>'btn btn-sm btn-danger pull-right', "onclick" => "return confirm('Are you sure you want to delete this item?');"])}}
+                                                {{Form::close()}}
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

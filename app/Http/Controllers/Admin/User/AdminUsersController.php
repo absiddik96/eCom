@@ -31,7 +31,8 @@ class AdminUsersController extends Controller
     public function create()
     {
         return view('admin.user.create')
-        ->with('roles', UserRole::pluck('name','id')->all());
+        ->with('personalroles', UserRole::where('role_for', UserRole::ROLE_FOR_PERSONAL_USER)->pluck('name','id')->all())
+        ->with('corporateroles', UserRole::where('role_for', UserRole::ROLE_FOR_CORPORATE_USER)->pluck('name','id')->all());
     }
 
     /**
@@ -62,9 +63,29 @@ class AdminUsersController extends Controller
             Session::flash('success','User create successfull');
         }
 
-        return redirect()->back();
+        return redirect()->route('users.index');
     }
 
+    public function corporateStore(Request $request)
+    {
+        $this->validate($request,[
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|max:50|confirmed',
+            'role_id' => 'required|numeric',
+        ],[
+            'role_id.required'=>'The role field is required.'
+        ]);
+
+        $input = $request->all();
+        $input['user_id'] = User::generateUserId();
+        $input['verification_token'] = User::generateVerificationToken();
+        $input['is_corporate'] = User::CORPORATE_USER;
+        $input['password'] = bcrypt($request->password);
+        $user = User::create($input);
+
+        return redirect()->route('users.index');
+    }
 
     /**
     * Show the form for editing the specified resource.
@@ -129,6 +150,15 @@ class AdminUsersController extends Controller
         return redirect()->route('users.index');
     }
 
+
+    public function userByRole($role)
+    {
+        $role = UserRole::where('slug',$role)->first();
+
+        return view('admin.user.index')
+        ->with('users', User::where('role_id', $role->id)->get())
+        ->with('role', $role);
+    }
 
     public function changePassword(Request $request, $user_id)
     {

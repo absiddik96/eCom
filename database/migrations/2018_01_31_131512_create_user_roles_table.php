@@ -17,6 +17,7 @@ class CreateUserRolesTable extends Migration
         Schema::create('user_roles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('slug');
             $table->boolean('role_for')->default(UserRole::ROLE_FOR_PERSONAL_USER);
             $table->timestamps();
         });

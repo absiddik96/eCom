@@ -36,6 +36,7 @@ class UserRolesController extends AdminBaseController
 
             $role = new UserRole();
             $role->name = strtolower($request->name);
+            $role->slug = str_slug($request->name);
             $role->role_for = $request->role_for;
 
             if ($role->save()) {
@@ -74,6 +75,7 @@ class UserRolesController extends AdminBaseController
             ]);
 
             $userRole->name = strtolower($request->name);
+            $userRole->slug = str_slug($request->name);
             $userRole->role_for = $request->role_for;
 
             if ($userRole->save()) {

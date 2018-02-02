@@ -60,7 +60,22 @@
                     <ul>
                         <li><a href="{{route('user-role.index')}}"><span class="fa fa-legal"></span>User Role</a></li>
                         <li><a href="{{route('users.create')}}"><span class="fa fa-plus"></span>Create User</a></li>
-                        <li><a href="{{route('users.index')}}"><span class="fa fa-list"></span>User List</a></li>
+
+                        <li class="xn-openable">
+
+                            <a href="#"><span class="fa fa-group"></span> <span class="xn-text">User List</span></a>
+                            <ul>
+                                <li><a href="{{route('users.index')}}"><span class="fa fa-list"></span>All User</a></li>
+
+                                @if (isset($allUserRoles) && count($allUserRoles))
+                                    @foreach ($allUserRoles as $role)
+                                        <li><a href="{{route('userByRole', $role->slug)}}"><span class="fa fa-key"></span>{{ $role->name }}</a></li>
+                                    @endforeach
+                                @endif
+
+                            </ul>
+                        </li>
+
                     </ul>
                 </li>
 
