@@ -206,6 +206,12 @@
                                 </li>
                             </ul>  
                         </li>
+                        <li>
+                            <a href="{{route('size.index')}}"><span class="fa fa-tasks"></span> Size</a>
+                        </li>
+                        <li>
+                            <a href="{{route('color.index')}}"><span class="fa fa-tasks"></span> Color</a>
+                        </li>
                     </ul>
                 </li>
 

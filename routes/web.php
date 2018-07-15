@@ -56,9 +56,14 @@ Route::group(['prefix'=>'admin'],function(){
     Route::group(['prefix'=>'product'], function(){
         //........type
         Route::resource('type','Admin\Product\TypesController',['except'=>['create','show']]);
+        //........category
         Route::resource('category','Admin\Product\CategoriesController',['except'=>['show']]);
+        //........sub category
         Route::resource('sub-category','Admin\Product\SubCategoriesController',['except'=>['show']]);
-
+        //........size
+        Route::resource('size','Admin\Product\SizesController',['except'=>['create','show']]);
+        //........color
+        Route::resource('color','Admin\Product\ColorsController',['except'=>['create','show']]);
 
 
         //.........get category for select option [ajax]
