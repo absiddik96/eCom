@@ -51,6 +51,19 @@ Route::group(['prefix'=>'admin'],function(){
     Route::resource('mobile-bank','Admin\Bank\MobileBank\MobileBanksController',['except'=>['create','show']]);
     //........e-wallet
     Route::resource('e-wallet','Admin\Bank\EWallet\EWalletsController',['except'=>['create','show']]);
+    
+    // ........... product
+    Route::group(['prefix'=>'product'], function(){
+        //........type
+        Route::resource('type','Admin\Product\TypesController',['except'=>['create','show']]);
+        Route::resource('category','Admin\Product\CategoriesController',['except'=>['show']]);
+        Route::resource('sub-category','Admin\Product\SubCategoriesController',['except'=>['show']]);
+
+
+
+        //.........get category for select option [ajax]
+        Route::post('get-category','Admin\Product\CategoriesController@getCategory')->name('getCategory');
+    });
 });
 
 //........SYSTEM LOCATION............

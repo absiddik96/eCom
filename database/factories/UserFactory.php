@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Admin\UserRole;
+use App\Models\User\User;
 use Faker\Generator as Faker;
 
 /*
@@ -13,11 +15,36 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(UserRole::class, function () {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => str_random(10),
+        'name' => 'admin',
+        'slug' => 'admin',
+        'role_for' => UserRole::ROLE_FOR_PERSONAL_USER,
     ];
 });
+
+$factory->define(User::class, function (Faker $faker ) use ($factory){
+    return [
+		'user_id'        => User::generateUserId(),
+		'name'           => 'admin',
+		'email'          => 'admin@gmail.com',
+		'password'       => bcrypt(123456),
+		'verified'       => 1,
+		'role_id'        => $factory->create(App\Models\Admin\UserRole::class)->id,
+		'is_active'      => 1,
+		'is_admin'       => 1,
+		'is_super_admin' => 1,
+		'is_corporate'   => 0,
+		'status'         => 1,
+    ];
+});
+
+
+
+
+
+
+
+
+
+

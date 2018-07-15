@@ -178,6 +178,37 @@
                     </ul>
                 </li>
 
+                <li class="xn-openable">
+                    <a href="#"><span class="glyphicon glyphicon-th-large"></span> <span class="xn-text">Product</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{route('type.index')}}"><span class="fa fa-tasks"></span> Type</a>
+                        </li>
+                        <li class="xn-openable">
+                          <a href="#"><span class="fa fa-flag"></span> Category</a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('category.create')}}"><span class="fa fa-plus"></span>Add Category</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('category.index')}}"><span class="fa fa-eye"></span>View Category</a>
+                                </li>
+                            </ul>  
+                        </li>
+                        <li class="xn-openable">
+                          <a href="#"><span class="fa fa-flag"></span> Sub Category</a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('sub-category.create')}}"><span class="fa fa-plus"></span>Add Sub Category</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('sub-category.index')}}"><span class="fa fa-eye"></span>View Sub Category</a>
+                                </li>
+                            </ul>  
+                        </li>
+                    </ul>
+                </li>
+
 
 
 
