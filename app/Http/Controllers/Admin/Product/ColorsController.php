@@ -40,11 +40,13 @@ class ColorsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'color' => 'required|min:1|unique:colors'
+            'name' => 'required|min:1|unique:colors',
+            'color' => 'required|min:1|unique:colors',
         ]);
 
         $color = new Color;
 
+        $color->name = strtolower($request->name);
         $color->color = strtolower($request->color);
 
         if ($color->save()) {
@@ -86,9 +88,11 @@ class ColorsController extends Controller
     public function update(Request $request, Color $color)
     {
         $this->validate($request,[
+            'name' => 'required|min:1|unique:colors,name,'.$color->id,
             'color' => 'required|min:1|unique:colors,color,'.$color->id,
         ]);
 
+        $color->name = strtolower($request->name);
         $color->color = strtolower($request->color);
 
         if ($color->save()) {

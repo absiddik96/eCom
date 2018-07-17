@@ -10,11 +10,19 @@
                 @include('errors.error')
                 {{Form::model($color,['route'=>['color.update',$color->id],'method'=>'PUT'])}}
                 <label for="">Color</label>
-                {{Form::text('color',null,['required','class'=>'form-control'])}}
-            <br>
+                {{Form::text('name',null,['required','class'=>'form-control'])}}
+                <br>
+                <label for="">Choose color &nbsp;&nbsp;&nbsp;</label>
+                <input name="color" type='hidden' id="custom" value="#ffffff">
+                <input name="pre_color" type='hidden' id="pre_color" value="{{ $color->color }}">
+                <br>
+                <br>
                 {{Form::submit('Update color',['class'=>'btn btn-info'])}}
                 {{Form::close()}}
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    @include('includes.productAjaxScript')
 @endsection

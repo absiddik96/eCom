@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Color extends Model
 {
-    function getColorAttribute($value='')
+    function getNameAttribute($value='')
     {
     	return strtoupper($value);
     }

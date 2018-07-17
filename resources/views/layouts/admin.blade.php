@@ -13,6 +13,7 @@
     <!-- CSS INCLUDE -->
     <link rel="stylesheet" type="text/css" id="theme" href="{{asset('admin/css/theme-brown.css')}}"/>
     <link rel="stylesheet" type="text/css" id="theme" href="{{asset('css/toastr.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="{{asset('color_picker/spectrum.css')}}"/>
 
     {{-- this style used for borderless table
     --       no need to change this
@@ -416,6 +417,8 @@ toastr.info("{{Session::get('info')}}")
 toastr.warning("{{Session::get('warning')}}")
 @endif
 </script>
+<script type="text/javascript" src="{{asset('color_picker/spectrum.js')}}"></script>
+
 
 @yield('scripts')
 <!-- END SCRIPTS -->

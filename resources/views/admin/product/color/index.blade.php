@@ -11,8 +11,13 @@
                 <div class="panel-body">
                     @include('errors.error')
                     {{Form::open(['route'=>'color.store','method'=>'POST'])}}
-                    <label for="">Product color</label>
-                    {{Form::text('color',null,['required','class'=>'form-control'])}}
+                    <label for="">Color Name</label>
+                    {{Form::text('name',null,['required','class'=>'form-control'])}}
+                    <br>
+                    <label for="">Choose color &nbsp;&nbsp;&nbsp;</label>
+                    <input name="color" type='hidden' id="custom" value="#ffffff">
+                    <input name="pre_color" type='hidden' id="pre_color" value="#ffffff">
+                    <br>
                     <br>
                     {{Form::submit('Add color',['class'=>'btn btn-info'])}}
                     {{Form::close()}}
@@ -28,6 +33,7 @@
                 <div class="panel-body">
                     <table class="table">
                         <thead>
+                            <th>Name</th>
                             <th>Color</th>
                             <th>Action</th>
                         </thead>
@@ -36,7 +42,10 @@
                             @if (count($colors))
                                 @foreach ($colors as $color)
                                     <tr>
-                                        <td>{{$color->color}}</td>
+                                        <td>{{$color->name}}</td>
+                                        <td>
+                                            <div style="width: 30px; height: 30px; background-color: {{$color->color}}; border: 1px solid black"></div>
+                                        </td>
                                         <td>
                                             <a href="{{route('color.edit',$color->id)}}" class="btn btn-sm btn-info pull-left">Edit</a>
 
@@ -58,4 +67,7 @@
 
         </div>
     </div>
+@endsection
+@section('scripts')
+    @include('includes.productAjaxScript')
 @endsection
