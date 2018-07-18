@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product;
+namespace App\Http\Controllers\Admin\Product\Type;
 
 use Auth;
 use Session;
 use Illuminate\Http\Request;
-use App\Models\Admin\Product\Color;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Product\Type\Type;
 
-class ColorsController extends Controller
+class TypesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class ColorsController extends Controller
      */
     public function index()
     {
-        return view('admin.product.color.index')
-                ->with('colors', Color::all());   
+        return view('admin.product.type.index')
+                ->with('types', Type::all());   
     }
 
     /**
@@ -40,17 +40,15 @@ class ColorsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'required|min:1|unique:colors',
-            'color' => 'required|min:1|unique:colors',
+            'type' => 'required|min:2|unique:types'
         ]);
 
-        $color = new Color;
+        $type = new Type;
 
-        $color->name = strtolower($request->name);
-        $color->color = strtolower($request->color);
+        $type->type = strtolower($request->type);
 
-        if ($color->save()) {
-            Session::flash('success', 'Successfully created a new product color');
+        if ($type->save()) {
+            Session::flash('success', 'Successfully created a new product type');
         }
         return redirect()->back();
     }
@@ -72,10 +70,10 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Color $color)
+    public function edit(Type $type)
     {
-        return view('admin.product.color.edit')
-                ->with('color', $color);
+        return view('admin.product.type.edit')
+                ->with('type', $type);
     }
 
     /**
@@ -85,20 +83,18 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Color $color)
+    public function update(Request $request, Type $type)
     {
         $this->validate($request,[
-            'name' => 'required|min:1|unique:colors,name,'.$color->id,
-            'color' => 'required|min:1|unique:colors,color,'.$color->id,
+            'type' => 'required|min:2|unique:types,type,'.$type->id,
         ]);
 
-        $color->name = strtolower($request->name);
-        $color->color = strtolower($request->color);
+        $type->type = strtolower($request->type);
 
-        if ($color->save()) {
-            Session::flash('success', 'Successfully updated this product color');
+        if ($type->save()) {
+            Session::flash('success', 'Successfully updated this product type');
         }
-        return redirect()->route('color.index');
+        return redirect()->route('type.index');
     }
 
     /**
@@ -107,10 +103,10 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Color $color)
+    public function destroy(Type $type)
     {
-        if ($color->delete()) {
-            Session::flash('success', 'Successfully deleted this product color');
+        if ($type->delete()) {
+            Session::flash('success', 'Successfully deleted this product type');
         }
         return redirect()->back();
     }

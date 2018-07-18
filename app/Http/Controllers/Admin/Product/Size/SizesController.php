@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product;
+namespace App\Http\Controllers\Admin\Product\Size;
 
 use Auth;
 use Session;
 use Illuminate\Http\Request;
-use App\Models\Admin\Product\Type;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Product\Size\Size;
 
-class TypesController extends Controller
+class SizesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class TypesController extends Controller
      */
     public function index()
     {
-        return view('admin.product.type.index')
-                ->with('types', Type::all());   
+        return view('admin.product.size.index')
+                ->with('sizes', Size::all());   
     }
 
     /**
@@ -40,15 +40,15 @@ class TypesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'type' => 'required|min:2|unique:types'
+            'size' => 'required|min:1|unique:sizes'
         ]);
 
-        $type = new Type;
+        $size = new Size;
 
-        $type->type = strtolower($request->type);
+        $size->size = strtolower($request->size);
 
-        if ($type->save()) {
-            Session::flash('success', 'Successfully created a new product type');
+        if ($size->save()) {
+            Session::flash('success', 'Successfully created a new product size');
         }
         return redirect()->back();
     }
@@ -70,10 +70,10 @@ class TypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit(Size $size)
     {
-        return view('admin.product.type.edit')
-                ->with('type', $type);
+        return view('admin.product.size.edit')
+                ->with('size', $size);
     }
 
     /**
@@ -83,18 +83,18 @@ class TypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request, Size $size)
     {
         $this->validate($request,[
-            'type' => 'required|min:2|unique:types,type,'.$type->id,
+            'size' => 'required|min:1|unique:sizes,size,'.$size->id,
         ]);
 
-        $type->type = strtolower($request->type);
+        $size->size = strtolower($request->size);
 
-        if ($type->save()) {
-            Session::flash('success', 'Successfully updated this product type');
+        if ($size->save()) {
+            Session::flash('success', 'Successfully updated this product size');
         }
-        return redirect()->route('type.index');
+        return redirect()->route('size.index');
     }
 
     /**
@@ -103,10 +103,10 @@ class TypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy(Size $size)
     {
-        if ($type->delete()) {
-            Session::flash('success', 'Successfully deleted this product type');
+        if ($size->delete()) {
+            Session::flash('success', 'Successfully deleted this product size');
         }
         return redirect()->back();
     }

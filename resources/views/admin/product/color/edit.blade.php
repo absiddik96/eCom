@@ -9,7 +9,7 @@
             <div class="panel-body">
                 @include('errors.error')
                 {{Form::model($color,['route'=>['color.update',$color->id],'method'=>'PUT'])}}
-                <label for="">Color</label>
+                <label for="">Color Name</label>
                 {{Form::text('name',null,['required','class'=>'form-control'])}}
                 <br>
                 <label for="">Choose color &nbsp;&nbsp;&nbsp;</label>

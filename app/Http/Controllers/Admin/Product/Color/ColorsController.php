@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product;
+namespace App\Http\Controllers\Admin\Product\Color;
 
 use Auth;
 use Session;
 use Illuminate\Http\Request;
-use App\Models\Admin\Product\Size;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Product\Color\Color;
 
-class SizesController extends Controller
+class ColorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class SizesController extends Controller
      */
     public function index()
     {
-        return view('admin.product.size.index')
-                ->with('sizes', Size::all());   
+        return view('admin.product.color.index')
+                ->with('colors', Color::all());   
     }
 
     /**
@@ -40,15 +40,17 @@ class SizesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'size' => 'required|min:1|unique:sizes'
+            'name' => 'required|min:1|unique:colors',
+            'color' => 'required|min:1|unique:colors',
         ]);
 
-        $size = new Size;
+        $color = new Color;
 
-        $size->size = strtolower($request->size);
+        $color->name = strtolower($request->name);
+        $color->color = strtolower($request->color);
 
-        if ($size->save()) {
-            Session::flash('success', 'Successfully created a new product size');
+        if ($color->save()) {
+            Session::flash('success', 'Successfully created a new product color');
         }
         return redirect()->back();
     }
@@ -70,10 +72,10 @@ class SizesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Size $size)
+    public function edit(Color $color)
     {
-        return view('admin.product.size.edit')
-                ->with('size', $size);
+        return view('admin.product.color.edit')
+                ->with('color', $color);
     }
 
     /**
@@ -83,18 +85,20 @@ class SizesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Size $size)
+    public function update(Request $request, Color $color)
     {
         $this->validate($request,[
-            'size' => 'required|min:1|unique:sizes,size,'.$size->id,
+            'name' => 'required|min:1|unique:colors,name,'.$color->id,
+            'color' => 'required|min:1|unique:colors,color,'.$color->id,
         ]);
 
-        $size->size = strtolower($request->size);
+        $color->name = strtolower($request->name);
+        $color->color = strtolower($request->color);
 
-        if ($size->save()) {
-            Session::flash('success', 'Successfully updated this product size');
+        if ($color->save()) {
+            Session::flash('success', 'Successfully updated this product color');
         }
-        return redirect()->route('size.index');
+        return redirect()->route('color.index');
     }
 
     /**
@@ -103,10 +107,10 @@ class SizesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Size $size)
+    public function destroy(Color $color)
     {
-        if ($size->delete()) {
-            Session::flash('success', 'Successfully deleted this product size');
+        if ($color->delete()) {
+            Session::flash('success', 'Successfully deleted this product color');
         }
         return redirect()->back();
     }

@@ -213,6 +213,17 @@
                         <li>
                             <a href="{{route('color.index')}}"><span class="fa fa-tasks"></span> Color</a>
                         </li>
+                        <li class="xn-openable">
+                          <a href="#"><span class="fa fa-flag"></span> Brand</a>
+                            <ul>
+                                <li>
+                                    <a href="{{route('brand.create')}}"><span class="fa fa-plus"></span>Add Brand</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('brand.index')}}"><span class="fa fa-eye"></span>View Brand</a>
+                                </li>
+                            </ul>  
+                        </li>
                     </ul>
                 </li>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin\Product;
+namespace App\Models\Admin\Product\Color;
 
 use Illuminate\Database\Eloquent\Model;
 

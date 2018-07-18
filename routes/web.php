@@ -55,19 +55,20 @@ Route::group(['prefix'=>'admin'],function(){
     // ........... product
     Route::group(['prefix'=>'product'], function(){
         //........type
-        Route::resource('type','Admin\Product\TypesController',['except'=>['create','show']]);
+        Route::resource('type','Admin\Product\Type\TypesController',['except'=>['create','show']]);
         //........category
-        Route::resource('category','Admin\Product\CategoriesController',['except'=>['show']]);
+        Route::resource('category','Admin\Product\Category\CategoriesController',['except'=>['show']]);
         //........sub category
-        Route::resource('sub-category','Admin\Product\SubCategoriesController',['except'=>['show']]);
+        Route::resource('sub-category','Admin\Product\SubCategory\SubCategoriesController',['except'=>['show']]);
         //........size
-        Route::resource('size','Admin\Product\SizesController',['except'=>['create','show']]);
+        Route::resource('size','Admin\Product\Size\SizesController',['except'=>['create','show']]);
         //........color
-        Route::resource('color','Admin\Product\ColorsController',['except'=>['create','show']]);
-
+        Route::resource('color','Admin\Product\Color\ColorsController',['except'=>['create','show']]);
+        //........Brand
+        Route::resource('brand','Admin\Product\Brand\BrandsController',['except'=>['show']]);
 
         //.........get category for select option [ajax]
-        Route::post('get-category','Admin\Product\CategoriesController@getCategory')->name('getCategory');
+        Route::post('get-category','Admin\Product\Category\CategoriesController@getCategory')->name('getCategory');
     });
 });
 

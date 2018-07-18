@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product;
+namespace App\Http\Controllers\Admin\Product\SubCategory;
 
 use Auth;
 use Session;
 use Illuminate\Http\Request;
-use App\Models\Admin\Product\Type;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Product\Category;
-use App\Models\Admin\Product\SubCategory;
+use App\Models\Admin\Product\Type\Type;
+use App\Models\Admin\Product\Category\Category;
+use App\Models\Admin\Product\SubCategory\SubCategory;
 
 class SubCategoriesController extends Controller
 {
