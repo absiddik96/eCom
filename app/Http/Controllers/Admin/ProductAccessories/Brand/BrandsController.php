@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product\Brand;
+namespace App\Http\Controllers\Admin\ProductAccessories\Brand;
 
 use Auth;
 use Image;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Product\Type\Type;
-use App\Models\Admin\Product\Brand\Brand;
+use App\Models\Admin\ProductAccessories\Type\Type;
+use App\Models\Admin\ProductAccessories\Brand\Brand;
 
 class BrandsController extends Controller
 {
@@ -19,7 +19,7 @@ class BrandsController extends Controller
      */
     public function index()
     {
-        return view('admin.product.brand.index')
+        return view('admin.product_accessories.brand.index')
                 ->with('brands', Brand::orderBy('name')->get());
     }
 
@@ -30,7 +30,7 @@ class BrandsController extends Controller
      */
     public function create()
     {
-        return view('admin.product.brand.create')
+        return view('admin.product_accessories.brand.create')
                 ->with('types', Type::pluck('type','id')->all());
     }
 
@@ -59,17 +59,17 @@ class BrandsController extends Controller
 
             $new_name = str_slug($request->name) .'-' . time() . '.' .$icon->getClientOriginalExtension();
 
-            if (!file_exists(public_path('icons/thumbnail'))) {
-                mkdir(public_path('icons/thumbnail'), 0777, true);
+            if (!file_exists(public_path('images/brand/icons/thumbnail'))) {
+                mkdir(public_path('images/brand/icons/thumbnail'), 0777, true);
             }
 
             //Upload File
-            $icon->move('public/icons', $new_name);
-            copy('public/icons/'.$new_name, 'public/icons/thumbnail/'.$new_name);
+            $icon->move('public/images/brand/icons', $new_name);
+            copy('public/images/brand/icons/'.$new_name, 'public/images/brand/icons/thumbnail/'.$new_name);
             
 
             //Resize image here
-            $thumbnailpath = public_path('icons/thumbnail/'.$new_name);
+            $thumbnailpath = public_path('images/brand/icons/thumbnail/'.$new_name);
             $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
                 $constraint->aspectRatio();
             });
@@ -105,7 +105,7 @@ class BrandsController extends Controller
      */
     public function edit(Brand $brand)
     {
-        return view('admin.product.brand.edit')
+        return view('admin.product_accessories.brand.edit')
                 ->with('brand', $brand)
                 ->with('types', Type::pluck('type','id')->all());
     }
@@ -138,23 +138,23 @@ class BrandsController extends Controller
             $icon_name = substr($brand_icon, 0, strpos($brand_icon, '.'));
 
             if ($brand_icon_ext != $icon->getClientOriginalExtension()) {
-                unlink('public/icons/'.$brand_icon);
-                unlink('public/icons/thumbnail/'.$brand_icon);
+                unlink('public/images/brand/icons/'.$brand_icon);
+                unlink('public/images/brand/icons/thumbnail/'.$brand_icon);
             }
 
             $icon_name = $icon_name .'.' .$icon->getClientOriginalExtension();
 
-            if (!file_exists(public_path('icons/thumbnail'))) {
-                mkdir(public_path('icons/thumbnail'), 0777, true);
+            if (!file_exists(public_path('images/brand/icons/thumbnail'))) {
+                mkdir(public_path('images/brand/icons/thumbnail'), 0777, true);
             }
 
             //Upload File
-            $icon->move('public/icons', $icon_name);
-            copy('public/icons/'.$icon_name, 'public/icons/thumbnail/'.$icon_name);
+            $icon->move('public/images/brand/icons', $icon_name);
+            copy('public/images/brand/icons/'.$icon_name, 'public/images/brand/icons/thumbnail/'.$icon_name);
             
 
             //Resize image here
-            $thumbnailpath = public_path('icons/thumbnail/'.$icon_name);
+            $thumbnailpath = public_path('images/brand/icons/thumbnail/'.$icon_name);
             $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
                 $constraint->aspectRatio();
             });
@@ -181,8 +181,8 @@ class BrandsController extends Controller
     {
         if ($brand->delete()) {
             $brand_icon = $brand->getOriginal('icon');
-            unlink('public/icons/'.$brand_icon);
-            unlink('public/icons/thumbnail/'.$brand_icon);
+            unlink('public/images/brand/icons/'.$brand_icon);
+            unlink('public/images/brand/icons/thumbnail/'.$brand_icon);
             Session::flash('success', 'Successfully deleted this brand');
         }
 

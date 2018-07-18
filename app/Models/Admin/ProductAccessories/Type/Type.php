@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin\Product\Type;
+namespace App\Models\Admin\ProductAccessories\Type;
 
 use Illuminate\Database\Eloquent\Model;
 

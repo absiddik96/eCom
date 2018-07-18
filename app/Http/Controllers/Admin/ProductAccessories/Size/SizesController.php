@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product\Size;
+namespace App\Http\Controllers\Admin\ProductAccessories\Size;
 
 use Auth;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Product\Size\Size;
+use App\Models\Admin\ProductAccessories\Size\Size;
 
 class SizesController extends Controller
 {
@@ -17,7 +17,7 @@ class SizesController extends Controller
      */
     public function index()
     {
-        return view('admin.product.size.index')
+        return view('admin.product_accessories.size.index')
                 ->with('sizes', Size::all());   
     }
 
@@ -72,7 +72,7 @@ class SizesController extends Controller
      */
     public function edit(Size $size)
     {
-        return view('admin.product.size.edit')
+        return view('admin.product_accessories.size.edit')
                 ->with('size', $size);
     }
 

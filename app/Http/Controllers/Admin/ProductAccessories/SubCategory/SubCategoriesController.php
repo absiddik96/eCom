@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product\SubCategory;
+namespace App\Http\Controllers\Admin\ProductAccessories\SubCategory;
 
 use Auth;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Product\Type\Type;
-use App\Models\Admin\Product\Category\Category;
-use App\Models\Admin\Product\SubCategory\SubCategory;
+use App\Models\Admin\ProductAccessories\Type\Type;
+use App\Models\Admin\ProductAccessories\Category\Category;
+use App\Models\Admin\ProductAccessories\SubCategory\SubCategory;
 
 class SubCategoriesController extends Controller
 {
@@ -19,7 +19,7 @@ class SubCategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.product.sub_category.index')
+        return view('admin.product_accessories.sub_category.index')
                 ->with('sub_categories', SubCategory::all());       
     }
 
@@ -30,7 +30,7 @@ class SubCategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.product.sub_category.create')
+        return view('admin.product_accessories.sub_category.create')
                 ->with('types', Type::pluck('type','id')->all());
     }
 
@@ -80,7 +80,7 @@ class SubCategoriesController extends Controller
      */
     public function edit(SubCategory $sub_category)
     {
-        return view('admin.product.sub_category.edit')
+        return view('admin.product_accessories.sub_category.edit')
                 ->with('sub_category', $sub_category)
                 ->with('types', Type::pluck('type','id')->all());
     }

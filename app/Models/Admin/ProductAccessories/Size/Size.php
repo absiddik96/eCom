@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin\Product\Size;
+namespace App\Models\Admin\ProductAccessories\Size;
 
 use Illuminate\Database\Eloquent\Model;
 

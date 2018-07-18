@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product\Category;
+namespace App\Http\Controllers\Admin\ProductAccessories\Category;
 
 use Auth;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Product\Type\Type;
-use App\Models\Admin\Product\Category\Category;
+use App\Models\Admin\ProductAccessories\Type\Type;
+use App\Models\Admin\ProductAccessories\Category\Category;
 
 class CategoriesController extends Controller
 {
@@ -18,7 +18,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.product.category.index')
+        return view('admin.product_accessories.category.index')
                 ->with('categories', Category::all());       
     }
 
@@ -29,7 +29,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.product.category.create')
+        return view('admin.product_accessories.category.create')
                 ->with('types', Type::pluck('type','id')->all());
     }
 
@@ -77,7 +77,7 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.product.category.edit')
+        return view('admin.product_accessories.category.edit')
                 ->with('category', $category)
                 ->with('types', Type::pluck('type','id')->all());
     }
