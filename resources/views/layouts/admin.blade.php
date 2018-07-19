@@ -18,7 +18,14 @@
     {{-- this style used for borderless table
     --       no need to change this
     --}}
-    <style type="text/css">.table.no-border tr td, .table.no-border tr th {border-width: 0;}</style>
+    <style type="text/css">
+        .table.no-border tr td, .table.no-border tr th {border-width: 0;}
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none; 
+          margin: 0; 
+        }
+    </style>
     {{-- this style used for borderless table  --}}
 
     @yield('styles')
@@ -180,7 +187,7 @@
                 </li>
 
                 <li class="xn-openable">
-                    <a href="#"><span class="glyphicon glyphicon-th-large"></span> <span class="xn-text">Product</span></a>
+                    <a href="#"><span class="glyphicon glyphicon-th-large"></span> <span class="xn-text">Product Accessories</span></a>
                     <ul>
                         <li>
                             <a href="{{route('type.index')}}"><span class="fa fa-tasks"></span> Type</a>
@@ -227,6 +234,17 @@
                     </ul>
                 </li>
 
+                <li class="xn-openable">
+                    <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Product</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{ route('product.create') }}"><span class="fa fa-plus"></span>Add Product</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('product.index') }}"><span class="fa fa-eye"></span>All Product</a>
+                        </li>
+                    </ul>
+                </li>
 
 
 
@@ -396,6 +414,7 @@
 <script type="text/javascript" src="{{asset('admin/js/plugins/jquery/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/plugins/jquery/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/plugins/bootstrap/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin/js/plugins/bootstrap/bootstrap-select.js')}}"></script>
 <!-- END PLUGINS -->
 
 <!-- START THIS PAGE PLUGINS-->
@@ -412,6 +431,8 @@
 
 <!-- START TEMPLATE -->
 <script type="text/javascript" src="{{asset('admin/js/settings.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin/js/plugins/fileinput/fileinput.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin/js/plugins/icheck/icheck.min.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('admin/js/plugins.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/actions.js')}}"></script>
@@ -429,7 +450,6 @@ toastr.warning("{{Session::get('warning')}}")
 @endif
 </script>
 <script type="text/javascript" src="{{asset('color_picker/spectrum.js')}}"></script>
-
 
 @yield('scripts')
 <!-- END SCRIPTS -->

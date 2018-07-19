@@ -47,6 +47,7 @@ class ColorsController extends Controller
         $color = new Color;
 
         $color->name = strtolower($request->name);
+        $color->slug = str_slug($request->name);
         $color->color = strtolower($request->color);
 
         if ($color->save()) {
@@ -93,6 +94,7 @@ class ColorsController extends Controller
         ]);
 
         $color->name = strtolower($request->name);
+        $color->slug = str_slug($request->name);
         $color->color = strtolower($request->color);
 
         if ($color->save()) {

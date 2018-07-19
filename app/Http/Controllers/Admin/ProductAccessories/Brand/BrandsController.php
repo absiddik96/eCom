@@ -51,7 +51,8 @@ class BrandsController extends Controller
         $brand = new Brand;
 
         $brand->type_id = $request->type_id;
-        $brand->name = $request->name;
+        $brand->name = strtolower($request->name);
+        $brand->slug = str_slug($request->name);
 
         if($request->hasFile('icon')) {
             // store in variable
@@ -126,7 +127,8 @@ class BrandsController extends Controller
         ]);
 
         $brand->type_id = $request->type_id;
-        $brand->name = $request->name;
+        $brand->name = strtolower($request->name);
+        $brand->slug = str_slug($request->name);
 
         if($request->hasFile('icon')) {
             // store in variable

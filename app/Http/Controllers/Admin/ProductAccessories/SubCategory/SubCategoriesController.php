@@ -53,6 +53,7 @@ class SubCategoriesController extends Controller
         $sub_cat->type_id = $request->type_id;
         $sub_cat->category_id = $request->category_id;
         $sub_cat->name = strtolower($request->name);
+        $sub_cat->slug = str_slug($request->name);
 
         if ($sub_cat->save()) {
             Session::flash('success', 'Successfully created a new sub category');
@@ -103,6 +104,7 @@ class SubCategoriesController extends Controller
         $sub_category->type_id = $request->type_id;
         $sub_category->category_id = $request->category_id;
         $sub_category->name = strtolower($request->name);
+        $sub_category->slug = str_slug($request->name);
 
         if ($sub_category->save()) {
             Session::flash('success', 'Successfully updated this sub category');
@@ -124,5 +126,12 @@ class SubCategoriesController extends Controller
         }
 
         return redirect()->route('sub-category.index');
+    }
+
+    public function getSubCategory(Request $request)
+    {
+        $category_id = $request->id;
+        $sub_categories = SubCategory::where('category_id',$category_id)->get()->toArray();
+        return $sub_categories;
     }
 }

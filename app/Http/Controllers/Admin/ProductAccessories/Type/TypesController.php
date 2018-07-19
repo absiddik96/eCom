@@ -46,6 +46,7 @@ class TypesController extends Controller
         $type = new Type;
 
         $type->type = strtolower($request->type);
+        $type->slug = str_slug($request->type);
 
         if ($type->save()) {
             Session::flash('success', 'Successfully created a new product type');
@@ -90,6 +91,8 @@ class TypesController extends Controller
         ]);
 
         $type->type = strtolower($request->type);
+        $type->slug = str_slug($request->type);
+        
 
         if ($type->save()) {
             Session::flash('success', 'Successfully updated this product type');

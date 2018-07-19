@@ -50,6 +50,7 @@ class CategoriesController extends Controller
 
         $cat->type_id = $request->type_id;
         $cat->name = strtolower($request->name);
+        $cat->slug = str_slug($request->name);
 
         if ($cat->save()) {
             Session::flash('success', 'Successfully created a new category');
@@ -98,6 +99,7 @@ class CategoriesController extends Controller
 
         $category->type_id = $request->type_id;
         $category->name = strtolower($request->name);
+        $category->slug = str_slug($request->name);
 
         if ($category->save()) {
             Session::flash('success', 'Successfully updated this category');

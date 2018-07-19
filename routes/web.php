@@ -69,7 +69,12 @@ Route::group(['prefix'=>'admin'],function(){
 
         //.........get category for select option [ajax]
         Route::post('get-category','Admin\ProductAccessories\Category\CategoriesController@getCategory')->name('getCategory');
+        //.........get sub category for select option [ajax]
+        Route::post('get-sub-category','Admin\ProductAccessories\SubCategory\SubCategoriesController@getSubCategory')->name('getSubCategory');
     });
+
+    //........Product
+        Route::resource('product','Admin\Product\ProductsController');
 });
 
 //........SYSTEM LOCATION............

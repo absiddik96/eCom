@@ -11,6 +11,11 @@ class Brand extends Model
     	return $this->belongsTo('App\Models\Admin\ProductAccessories\Type\Type');
     }
 
+    public function getNameAttribute($value = '')
+    {
+    	return strtoupper($value);
+    }
+
     public function getIconAttribute($value = '')
     {
     	return asset('images/brand/icons/thumbnail/'.$value);

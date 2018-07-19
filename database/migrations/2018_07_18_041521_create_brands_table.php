@@ -17,6 +17,7 @@ class CreateBrandsTable extends Migration
             $table->increments('id');
             $table->integer('type_id')->unsigned();
             $table->string('name');
+            $table->string('slug');
             $table->string('icon');
             $table->timestamps();
 
