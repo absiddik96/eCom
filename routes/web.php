@@ -3,9 +3,28 @@
 // 1. resource route names are [-]hiphen seperated
 // 2. others route names ar camelcase
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'Front\Home\HomeController@index')->name('home.index');
+
+Route::get('/customer/account/create', 'Customer\CustomersController@reg_form')->name('customer.reg-form');
+Route::post('/customer/registation', 'Customer\CustomersController@registration')->name('customer.reg');
+Route::post('/customer/login', 'Customer\CustomersController@login')->name('customer.login');
+
+Route::group(['prefix'=>'customer','middleware'=>'auth:customer'],function(){
+    Route::get('account', 'Customer\CustomersController@account')->name('customer.account');
 });
+
+Route::get('/{type}/{category}/source={sub_category}', 'Front\Product\ProductsController@sub_cat_product_list')->name('product_list.sub_cat');
+Route::get('/{type}/source={category}', 'Front\Product\ProductsController@cat_product_list')->name('product_list.cat');
+Route::get('/source={type}', 'Front\Product\ProductsController@type_product_list')->name('product_list.type');
+Route::get('/product={product}', 'Front\Product\ProductsController@product_details')->name('product.details');
+
+// shopping cart
+Route::post('shopping-cart/add','Front\ShoppingCart\ShoppingCartController@add_cart')->name('shopping-cart.add');
+Route::get('shopping-cart','Front\ShoppingCart\ShoppingCartController@index')->name('shopping-cart.index');
+Route::get('shopping-cart/update','Front\ShoppingCart\ShoppingCartController@update')->name('shopping-cart.update');
+Route::get('shopping-cart/remov/{id}','Front\ShoppingCart\ShoppingCartController@remove')->name('shopping-cart.remove');
+
+
 Route::get('/admin', function () {
     return view('layouts.admin');
 });
@@ -23,7 +42,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //.........admin login
 Route::get('admin/login','Admin\User\AdminUsersController@login')->name('admin.login');
 
-Route::group(['prefix'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     //..........admin dash
     Route::get('dash','Admin\Dash\AdminDashController@dash')->name('admin.dash');
     //..........user role
@@ -51,15 +70,15 @@ Route::group(['prefix'=>'admin'],function(){
     Route::resource('mobile-bank','Admin\Bank\MobileBank\MobileBanksController',['except'=>['create','show']]);
     //........e-wallet
     Route::resource('e-wallet','Admin\Bank\EWallet\EWalletsController',['except'=>['create','show']]);
-    
+
     // ........... product
     Route::group(['prefix'=>'product'], function(){
         //........type
-        Route::resource('type','Admin\ProductAccessories\Type\TypesController',['except'=>['create','show']]);
+        Route::resource('type','Admin\ProductSection\Type\TypesController',['except'=>['create','show']]);
         //........category
-        Route::resource('category','Admin\ProductAccessories\Category\CategoriesController',['except'=>['show']]);
+        Route::resource('category','Admin\ProductSection\Category\CategoriesController',['except'=>['show']]);
         //........sub category
-        Route::resource('sub-category','Admin\ProductAccessories\SubCategory\SubCategoriesController',['except'=>['show']]);
+        Route::resource('sub-category','Admin\ProductSection\SubCategory\SubCategoriesController',['except'=>['show']]);
         //........size
         Route::resource('size','Admin\ProductAccessories\Size\SizesController',['except'=>['create','show']]);
         //........color

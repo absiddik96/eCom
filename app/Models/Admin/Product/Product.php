@@ -30,21 +30,21 @@ class Product extends Model
 
     public function brand()
     {
-    	return $this->belongsTo('App\Models\Admin\ProductAccessories\Brand\Brand');
+    	return $this->belongsTo('App\Models\Admin\ProductAccessories\Brand');
     }
 
     public function category()
     {
-    	return $this->belongsTo('App\Models\Admin\ProductAccessories\Category\Category');
+    	return $this->belongsTo('App\Models\Admin\ProductSection\Category');
     }
 
     public function type()
     {
-        return $this->belongsTo('App\Models\Admin\ProductAccessories\Type\Type');
+        return $this->belongsTo('App\Models\Admin\ProductSection\Type');
     }
 
     public function subCategory()
     {
-    	return $this->belongsTo('App\Models\Admin\ProductAccessories\SubCategory\SubCategory');
+    	return $this->belongsTo('App\Models\Admin\ProductSection\SubCategory');
     }
 }

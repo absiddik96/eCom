@@ -1,0 +1,40 @@
+/*********** spinner start *************/
+
+.wan-spinner {
+  /*border: 1px solid #dddddd;*/
+  display: inline-block;
+}
+
+.wan-spinner .minus,
+.wan-spinner .plus,
+.wan-spinner input {
+  height: 25px;
+  float: left;
+  line-height: 1em;
+  padding: 5px;
+  text-align: center;
+}
+
+.wan-spinner input {
+  border: none;
+  border-left: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  margin: 0;
+  width: 40px;
+  height: 26px;
+  border: 1px solid #dddddd;
+  
+}
+
+.wan-spinner .minus,
+.wan-spinner .plus {
+  color: #333333;
+  cursor: pointer;
+  text-decoration: none;
+  width: 25px;
+  height: 26px;
+  background-color: #ECF0F1;
+}
+
+
+/*********** spinner end *************/

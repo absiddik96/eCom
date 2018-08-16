@@ -31,7 +31,7 @@
                     <h4>Product Colors</h4>
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table datatable">
                         <thead>
                             <th>Name</th>
                             <th>Color</th>

@@ -7,7 +7,7 @@
                 <h4>Product Category</h4>
             </div>
             <div class="panel-body">
-                <table class="table">
+                <table class="table datatable">
                     <thead>
                         <th>Category</th>
                         <th>Type</th>

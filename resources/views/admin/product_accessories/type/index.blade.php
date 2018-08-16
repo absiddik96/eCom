@@ -26,7 +26,7 @@
                     <h4>Product Types</h4>
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table datatable">
                         <thead>
                             <th>Type</th>
                             <th>Action</th>

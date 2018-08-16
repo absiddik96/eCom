@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
-use  Illuminate\Support\Facades\Schema;
+use View;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Admin\ProductSection\Type;
+use App\Models\Admin\ProductSection\Category;
+use App\Models\Admin\ProductSection\SubCategory;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        View::share('front_types', Type::all());
     }
 
     /**

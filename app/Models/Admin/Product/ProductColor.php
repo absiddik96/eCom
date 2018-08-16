@@ -8,6 +8,6 @@ class ProductColor extends Model
 {
     public function color()
     {
-    	return $this->belongsTo('App\Models\Admin\ProductAccessories\Color\Color');
+    	return $this->belongsTo('App\Models\Admin\ProductAccessories\Color');
     }
 }

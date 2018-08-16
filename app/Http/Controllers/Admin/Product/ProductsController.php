@@ -12,21 +12,21 @@ use App\Models\Admin\Product\ProductSize;
 use App\Models\Admin\Product\ProductColor;
 use App\Models\Admin\Product\ProductImage;
 use App\Models\Admin\Product\ProductWeight;
-use App\Models\Admin\ProductAccessories\Type\Type;
-use App\Models\Admin\ProductAccessories\Size\Size;
-use App\Models\Admin\ProductAccessories\Brand\Brand;
-use App\Models\Admin\ProductAccessories\Color\Color;
-use App\Models\Admin\ProductAccessories\Category\Category;
+use App\Models\Admin\ProductSection\Type;
+use App\Models\Admin\ProductAccessories\Size;
+use App\Models\Admin\ProductAccessories\Brand;
+use App\Models\Admin\ProductAccessories\Color;
+use App\Models\Admin\ProductAccessories\Category;
 
 class ProductsController extends Controller
 {
-    
+
     public function index(Request $request)
     {
         $type_slug = $request->type;
         $type = Type::where('slug',$type_slug)->first();
         $products = [];
-        
+
         if ($type) {
             $products = Product::where('type_id',$type->id)->get();
         }
@@ -46,14 +46,14 @@ class ProductsController extends Controller
         $categories = '';
         $brands = '';
         $type = Type::where('slug',$type_slug)->first();
-        
+
         if ($type) {
             $type_slug = $type->slug;
             $categories = Category::where('type_id',$type->id)->get();
             $brands = Brand::where('type_id',$type->id)->get();
         }
 
-        
+
 
         switch ($type_slug) {
             case 'fabrics':
@@ -203,14 +203,15 @@ class ProductsController extends Controller
                 //Upload File
                 $image->move('public/images/product/images', $new_name);
                 copy('public/images/product/images/'.$new_name, 'public/images/product/images/thumbnail/'.$new_name);
-                
+
 
                 //Resize image here
                 $thumbnailpath = public_path('images/product/images/thumbnail/'.$new_name);
-                $img = Image::make($thumbnailpath)->resize(400, 150, function($constraint) {
-                    $constraint->aspectRatio();
-                });
-                $img->save($thumbnailpath);
+                // $img = Image::make($thumbnailpath)->resize(450, 600, function($constraint) {
+                //     $constraint->aspectRatio();
+                // });
+                // $img->save($thumbnailpath);
+                $img = Image::make($thumbnailpath)->resize(450, 600)->save($thumbnailpath);
 
                 $p_images[$i]['product_id'] = $product->id;
                 $p_images[$i]['product_code'] = $product->product_code;

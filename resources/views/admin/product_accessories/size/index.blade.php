@@ -26,7 +26,7 @@
                     <h4>Product Sizes</h4>
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table datatable">
                         <thead>
                             <th>Size</th>
                             <th>Action</th>

@@ -7,8 +7,8 @@ use Image;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\ProductAccessories\Type\Type;
-use App\Models\Admin\ProductAccessories\Brand\Brand;
+use App\Models\Admin\ProductSection\Type;
+use App\Models\Admin\ProductAccessories\Brand;
 
 class BrandsController extends Controller
 {
@@ -67,7 +67,7 @@ class BrandsController extends Controller
             //Upload File
             $icon->move('public/images/brand/icons', $new_name);
             copy('public/images/brand/icons/'.$new_name, 'public/images/brand/icons/thumbnail/'.$new_name);
-            
+
 
             //Resize image here
             $thumbnailpath = public_path('images/brand/icons/thumbnail/'.$new_name);
@@ -153,7 +153,7 @@ class BrandsController extends Controller
             //Upload File
             $icon->move('public/images/brand/icons', $icon_name);
             copy('public/images/brand/icons/'.$icon_name, 'public/images/brand/icons/thumbnail/'.$icon_name);
-            
+
 
             //Resize image here
             $thumbnailpath = public_path('images/brand/icons/thumbnail/'.$icon_name);

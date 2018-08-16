@@ -7,7 +7,7 @@
                 <h4>Product Brand</h4>
             </div>
             <div class="panel-body">
-                <table class="table">
+                <table class="table datatable">
                     <thead>
                         <th>Icon</th>
                         <th>Brand</th>

@@ -6,7 +6,7 @@ use Auth;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\ProductAccessories\Color\Color;
+use App\Models\Admin\ProductAccessories\Color;
 
 class ColorsController extends Controller
 {
@@ -18,7 +18,7 @@ class ColorsController extends Controller
     public function index()
     {
         return view('admin.product_accessories.color.index')
-                ->with('colors', Color::all());   
+                ->with('colors', Color::all());
     }
 
     /**

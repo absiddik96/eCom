@@ -8,6 +8,6 @@ class ProductSize extends Model
 {
     public function size()
     {
-    	return $this->belongsTo('App\Models\Admin\ProductAccessories\Size\Size');
+    	return $this->belongsTo('App\Models\Admin\ProductAccessories\Size');
     }
 }

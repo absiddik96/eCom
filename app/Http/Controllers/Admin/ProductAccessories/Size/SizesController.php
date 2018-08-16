@@ -6,7 +6,7 @@ use Auth;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\ProductAccessories\Size\Size;
+use App\Models\Admin\ProductAccessories\Size;
 
 class SizesController extends Controller
 {
@@ -18,7 +18,7 @@ class SizesController extends Controller
     public function index()
     {
         return view('admin.product_accessories.size.index')
-                ->with('sizes', Size::all());   
+                ->with('sizes', Size::all());
     }
 
     /**

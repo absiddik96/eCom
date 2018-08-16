@@ -6,7 +6,7 @@
         {{Form::open(['route'=>'product.index','method'=>'get','class'=> 'form-horizontal'])}}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>Add Product</h4>
+                    <h4>Product</h4>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
