@@ -25,7 +25,6 @@ class CreateProductsTable extends Migration
             $table->integer('sub_category_id')->unsigned();
             $table->integer('brand_id')->unsigned();
             $table->string('barcode');
-            $table->integer('price')->unsigned();
             $table->timestamps();
 
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');

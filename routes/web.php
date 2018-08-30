@@ -87,13 +87,29 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
         Route::resource('brand','Admin\ProductAccessories\Brand\BrandsController',['except'=>['show']]);
 
         //.........get category for select option [ajax]
-        Route::post('get-category','Admin\ProductAccessories\Category\CategoriesController@getCategory')->name('getCategory');
+        Route::post('get-category','Admin\ProductSection\Category\CategoriesController@getCategory')->name('getCategory');
         //.........get sub category for select option [ajax]
-        Route::post('get-sub-category','Admin\ProductAccessories\SubCategory\SubCategoriesController@getSubCategory')->name('getSubCategory');
+        Route::post('get-sub-category','Admin\ProductSection\SubCategory\SubCategoriesController@getSubCategory')->name('getSubCategory');
     });
 
     //........Product
-        Route::resource('product','Admin\Product\ProductsController');
+    Route::resource('product-details','Admin\Product\ProductsController',['except'=>['show']]);
+    Route::get('product-details/{product_id}','Admin\Product\ProductsController@create')->name('product.details.create');
+    // Product Price
+    Route::resource('product-price','Admin\Product\ProductPrice\ProductPricesController',['except'=>['create','show']]);
+    Route::get('product-price/{product_id}','Admin\Product\ProductPrice\ProductPricesController@create')->name('product-price.create');
+    // Product Size
+    Route::resource('product-size','Admin\Product\ProductSize\ProductSizesController',['except'=>['create','show']]);
+    Route::get('product-size/{product_id}','Admin\Product\ProductSize\ProductSizesController@create')->name('product-size.create');
+    // Product Color
+    Route::resource('product-color','Admin\Product\ProductColor\ProductColorsController',['except'=>['create','show']]);
+    Route::get('product-color/{product_id}','Admin\Product\ProductColor\ProductColorsController@create')->name('product-color.create');
+    // Product Weight
+    Route::resource('product-weight','Admin\Product\ProductWeight\ProductWeightsController',['except'=>['create','show']]);
+    Route::get('product-weight/{product_id}','Admin\Product\ProductWeight\ProductWeightsController@create')->name('product-weight.create');
+    // Product Image
+    Route::resource('product-image','Admin\Product\ProductImage\ProductImagesController',['except'=>['create','show']]);
+    Route::get('product-image/{product_id}','Admin\Product\ProductImage\ProductImagesController@create')->name('product-image.create');
 });
 
 //........SYSTEM LOCATION............

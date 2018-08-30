@@ -95,12 +95,12 @@
               <div class="flipper">
                 <div class="front">
                   <a href="{{ route('product.details',[$product->slug]) }}">
-                    <img src="{{ $product->images[0]->image }}" alt="" class="img-responsive">
+                    <img src="{{ $product->images?$product->images[0]->image:'' }}" alt="" class="img-responsive">
                   </a>
                 </div>
                 <div class="back">
                   <a href="{{ route('product.details',[$product->slug]) }}">
-                    <img src="{{ $product->images[0]->image }}" alt="" class="img-responsive">
+                    <img src="{{ $product->images?$product->images[0]->image:'' }}" alt="" class="img-responsive">
                   </a>
                 </div>
               </div>
@@ -118,7 +118,7 @@
                 <input id="product_id_{{ $p }}" type="hidden" value="{{ $product->id }}">
                 <input id="product_code_{{ $p }}" type="hidden" value="{{ $product->product_code }}">
                 <input id="product_title_{{ $p }}" type="hidden" value="{{ $product->title }}">
-                <input id="product_image_{{ $p }}" type="hidden" value="{{ $product->images[0]->image }}">
+                <input id="product_image_{{ $p }}" type="hidden" value="{{ $product->images?$product->images[0]->image:'' }}">
                 <input id="product_slug_{{ $p }}" type="hidden" value="{{ $product->slug }}">
                 <input id="product_type_{{ $p }}" type="hidden" value="{{ $product->type_id }}">
                 <input id="product_category_{{ $p }}" type="hidden" value="{{ $product->category_id }}">

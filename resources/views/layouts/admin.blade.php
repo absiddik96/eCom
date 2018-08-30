@@ -20,10 +20,10 @@
     --}}
     <style type="text/css">
         .table.no-border tr td, .table.no-border tr th {border-width: 0;}
-        input[type=number]::-webkit-inner-spin-button, 
-        input[type=number]::-webkit-outer-spin-button { 
-          -webkit-appearance: none; 
-          margin: 0; 
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
         }
     </style>
     {{-- this style used for borderless table  --}}
@@ -201,7 +201,7 @@
                                 <li>
                                     <a href="{{route('category.index')}}"><span class="fa fa-eye"></span>View Category</a>
                                 </li>
-                            </ul>  
+                            </ul>
                         </li>
                         <li class="xn-openable">
                           <a href="#"><span class="fa fa-flag"></span> Sub Category</a>
@@ -212,7 +212,7 @@
                                 <li>
                                     <a href="{{route('sub-category.index')}}"><span class="fa fa-eye"></span>View Sub Category</a>
                                 </li>
-                            </ul>  
+                            </ul>
                         </li>
                         <li>
                             <a href="{{route('size.index')}}"><span class="fa fa-tasks"></span> Size</a>
@@ -229,7 +229,7 @@
                                 <li>
                                     <a href="{{route('brand.index')}}"><span class="fa fa-eye"></span>View Brand</a>
                                 </li>
-                            </ul>  
+                            </ul>
                         </li>
                     </ul>
                 </li>
@@ -238,10 +238,10 @@
                     <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Product</span></a>
                     <ul>
                         <li>
-                            <a href="{{ route('product.create') }}"><span class="fa fa-plus"></span>Add Product</a>
+                            <a href="{{ route('product-details.create') }}"><span class="fa fa-plus"></span>Add Product</a>
                         </li>
                         <li>
-                            <a href="{{ route('product.index') }}"><span class="fa fa-eye"></span>All Product</a>
+                            <a href="{{ route('product-details.index') }}"><span class="fa fa-eye"></span>All Product</a>
                         </li>
                     </ul>
                 </li>

@@ -16,7 +16,6 @@ class CreateProductWeightsTable extends Migration
         Schema::create('product_weights', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned();
-            $table->string('product_code');
             $table->string('weight');
             $table->timestamps();
 
