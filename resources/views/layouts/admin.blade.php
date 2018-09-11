@@ -187,7 +187,7 @@
                 </li>
 
                 <li class="xn-openable">
-                    <a href="#"><span class="glyphicon glyphicon-th-large"></span> <span class="xn-text">Product Accessories</span></a>
+                    <a href="#"><span class="glyphicon glyphicon-th-large"></span> <span class="xn-text">Product Section</span></a>
                     <ul>
                         <li>
                             <a href="{{route('type.index')}}"><span class="fa fa-tasks"></span> Type</a>
@@ -214,14 +214,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="{{route('size.index')}}"><span class="fa fa-tasks"></span> Size</a>
-                        </li>
-                        <li>
-                            <a href="{{route('color.index')}}"><span class="fa fa-tasks"></span> Color</a>
-                        </li>
+                    </ul>
+                </li>
+                <li class="xn-openable">
+                    <a href="#"><span class="glyphicon glyphicon-th-large"></span> <span class="xn-text">Product Accessories</span></a>
+                    <ul>
                         <li class="xn-openable">
-                          <a href="#"><span class="fa fa-flag"></span> Brand</a>
+                            <a href="#"><span class="fa fa-flag"></span> Brand</a>
                             <ul>
                                 <li>
                                     <a href="{{route('brand.create')}}"><span class="fa fa-plus"></span>Add Brand</a>
@@ -230,6 +229,12 @@
                                     <a href="{{route('brand.index')}}"><span class="fa fa-eye"></span>View Brand</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="{{route('color.index')}}"><span class="fa fa-tasks"></span> Color</a>
+                        </li>
+                        <li>
+                            <a href="{{route('size.index')}}"><span class="fa fa-tasks"></span> Size</a>
                         </li>
                     </ul>
                 </li>

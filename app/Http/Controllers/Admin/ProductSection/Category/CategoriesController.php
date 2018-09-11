@@ -18,7 +18,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.product_accessories.category.index')
+        return view('admin.product_section.category.index')
                 ->with('categories', Category::all());
     }
 
@@ -29,7 +29,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.product_accessories.category.create')
+        return view('admin.product_section.category.create')
                 ->with('types', Type::pluck('type','id')->all());
     }
 
@@ -78,7 +78,7 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.product_accessories.category.edit')
+        return view('admin.product_section.category.edit')
                 ->with('category', $category)
                 ->with('types', Type::pluck('type','id')->all());
     }

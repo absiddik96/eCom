@@ -19,7 +19,7 @@ class SubCategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.product_accessories.sub_category.index')
+        return view('admin.product_section.sub_category.index')
                 ->with('sub_categories', SubCategory::all());
     }
 
@@ -30,7 +30,7 @@ class SubCategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.product_accessories.sub_category.create')
+        return view('admin.product_section.sub_category.create')
                 ->with('types', Type::pluck('type','id')->all());
     }
 
@@ -81,7 +81,7 @@ class SubCategoriesController extends Controller
      */
     public function edit(SubCategory $sub_category)
     {
-        return view('admin.product_accessories.sub_category.edit')
+        return view('admin.product_section.sub_category.edit')
                 ->with('sub_category', $sub_category)
                 ->with('types', Type::pluck('type','id')->all());
     }

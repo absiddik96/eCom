@@ -17,7 +17,7 @@ class TypesController extends Controller
      */
     public function index()
     {
-        return view('admin.product_accessories.type.index')
+        return view('admin.product_section.type.index')
                 ->with('types', Type::all());
     }
 
@@ -73,7 +73,7 @@ class TypesController extends Controller
      */
     public function edit(Type $type)
     {
-        return view('admin.product_accessories.type.edit')
+        return view('admin.product_section.type.edit')
                 ->with('type', $type);
     }
 
