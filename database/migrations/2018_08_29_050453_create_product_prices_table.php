@@ -19,6 +19,10 @@ class CreateProductPricesTable extends Migration
             $table->integer('buying_price')->unsigned();
             $table->integer('travel_cost')->unsigned();
             $table->integer('storage_cost')->unsigned();
+            $table->integer('total_cost')->unsigned();
+            $table->integer('profit_type')->unsigned();
+            $table->integer('profit')->unsigned();
+            $table->integer('price')->unsigned();
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');

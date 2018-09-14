@@ -13,7 +13,12 @@ class Product extends Model
         return (string)rand(1111, 9999) . time();
     }
 
-    public function images()
+    public function price()
+    {
+    	return $this->hasOne('App\Models\Product\ProductPrice');
+    }
+
+	public function images()
     {
     	return $this->hasMany('App\Models\Admin\Product\ProductImage');
     }

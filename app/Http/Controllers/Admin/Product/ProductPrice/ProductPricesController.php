@@ -56,6 +56,10 @@ class ProductPricesController extends Controller
             'buying_price' => 'required|min:2|numeric',
             'travel_cost' => 'required|min:2|numeric',
             'storage_cost' => 'required|min:2|numeric',
+            'total_cost' => 'required|numeric',
+            'profit_type' => 'required|numeric',
+            'profit' => 'required|numeric',
+            'price' => 'required|numeric',
         ]);
 
         $price = new ProductPrice;
@@ -63,6 +67,10 @@ class ProductPricesController extends Controller
         $price->buying_price = $request->buying_price;
         $price->travel_cost = $request->travel_cost;
         $price->storage_cost = $request->storage_cost;
+        $price->total_cost = $request->total_cost;
+        $price->profit_type = $request->profit_type;
+        $price->profit = $request->profit;
+        $price->price = $request->price;
 
         if ($price->save()) {
             Session::flash('success','Product Price add successfully');
@@ -116,6 +124,10 @@ class ProductPricesController extends Controller
         $price->buying_price = $request->buying_price;
         $price->travel_cost = $request->travel_cost;
         $price->storage_cost = $request->storage_cost;
+        $price->total_cost = $request->total_cost;
+        $price->profit_type = $request->profit_type;
+        $price->profit = $request->profit;
+        $price->price = $request->price;
 
         if ($price->save()) {
             Session::flash('success','Product Price add successfully');
