@@ -28,7 +28,7 @@
                                     <td>{{ $p->brand->name }}</td>
                                     <td>{{ $p->category->name }}</td>
                                     <td>{{ $p->subCategory->name }}</td>
-                                    <td>{{ $p->price->buying_price }}</td>
+                                    <td>{{ $p->price->price }}</td>
                                     <td>{{ $p->barcode }}</td>
                                     <td>
                                         {{-- <a href="{{ route('product.show',$p->slug) }}" class="btn btn-info"><i class="fa fa-eye"></i></a> --}}

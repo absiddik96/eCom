@@ -117,6 +117,10 @@ class ProductPricesController extends Controller
             'buying_price' => 'required|min:2|numeric',
             'travel_cost' => 'required|min:2|numeric',
             'storage_cost' => 'required|min:2|numeric',
+            'total_cost' => 'required|numeric',
+            'profit_type' => 'required|numeric',
+            'profit' => 'required|numeric',
+            'price' => 'required|numeric',
         ]);
 
         $price = ProductPrice::find($id);
